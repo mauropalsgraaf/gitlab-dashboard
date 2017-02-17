@@ -25,10 +25,6 @@ config :gitlab_dashboard, GitlabDashboard.Endpoint,
     ]
   ]
 
-config :gitlab_dashboard, :environment,
-  gitlab_api_token: System.get_env("GITLAB_API_TOKEN"),
-  gitlab_api_host: System.get_env("GITLAB_API_HOST")
-
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
 

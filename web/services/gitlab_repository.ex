@@ -18,26 +18,24 @@ defmodule GitlabRepository do
      ["PRIVATE-TOKEN": gitlab_api_token(), "content-type": "application/json"]
   end
 
-  defp latest_build_per_branch(builds) do
-      Enum.group_by(builds, fn branch -> branch.ref end)
-      |> Enum.map(fn {k, v} ->
-        {k, List.first(v)}
-      end)
-  end
-
   defp master_build_per_project(builds) do
     builds
       |> Enum.filter(fn build -> build.ref == "master" end)
   end
 
   defp gitlab_api_token() do
-    {k, v} = List.first(Application.get_env(:gitlab_dashboard, :environment, :gitlab_api_token))
-    v
+    {_, api_token} = List.first(Application.get_env(:gitlab_dashboard, :environment, :gitlab_api_token))
+    case api_token do
+      Nil -> raise "Environment variable GITLAB_API_TOKEN not set"
+      _ -> api_token
+    end
   end
 
   defp gitlab_api_host() do
-    {k, v} = List.last(Application.get_env(:gitlab_dashboard, :environment, :gitlab_api_host))
-    
-    v
+    {_, api_host} = List.last(Application.get_env(:gitlab_dashboard, :environment, :gitlab_api_host))
+    case api_host do
+      Nil -> raise "Environment variable GITLAB_API_HOST not set"
+      _ -> api_host
+    end
   end
 end
