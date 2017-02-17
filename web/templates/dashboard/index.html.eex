@@ -1,0 +1,10 @@
+<div>
+  <%= for project <- @projects_with_builds do %>
+    <div class="col-sm-3">
+
+      <div class="panel <%= List.first(project.builds).status %>">
+        <h2><%= project.project.name %></h2>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Hello GitlabDashboard!</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <style media="screen">
+      .success {
+        background-color: #5AB552;
+      }
+
+      .failed {
+        background-color: red;
+      }
+
+      .skipped {
+        background-color: grey;
+      }
+
+      .running {
+        background-color: #5997f9;
+      }
+
+      .panel {
+        text-align: center;
+        display: inline-block;
+        height: 140px;
+        width: 100%;
+      }
+    </style>
+
+    <script>
+      setTimeout(
+        function() {
+          location.reload();
+        }, 10000
+      )
+    </script>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <main role="main">
+        <%= render @view_module, @view_template, assigns %>
+      </main>
+
+    </div> <!-- /container -->
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>
