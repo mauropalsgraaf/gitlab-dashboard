@@ -1,8 +1,14 @@
 defmodule GitlabRepository do
   def get_projects do
-    %HTTPotion.Response{"body": response} = HTTPotion.get("#{gitlab_api_host()}/projects", [headers: headers(), timeout: 10000])
+    %HTTPotion.Response{"body": response} = HTTPotion.get("#{gitlab_api_host()}/projects?page=1", [headers: headers(), timeout: 10000])
 
-    Poison.decode! response, as: [%Project{}]
+    page1 = Poison.decode! response, as: [%Project{}]
+
+    %HTTPotion.Response{"body": response2} = HTTPotion.get("#{gitlab_api_host()}/projects?page=2", [headers: headers(), timeout: 10000])
+
+    page2 = Poison.decode! response2, as: [%Project{}]
+
+    page1 ++ page2
   end
 
   def get_builds_for_project(project) do
