@@ -17,6 +17,8 @@ defmodule GitlabDashboard.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", DashboardController, :index
+    post "/event", GitlabController, :event
+
   end
 
   # Other scopes may use custom stacks.
