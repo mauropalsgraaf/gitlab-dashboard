@@ -19,11 +19,15 @@
       }
 
       .skipped {
-        background-color: grey;
+        background-color: yellow;
       }
 
       .running {
         background-color: #5997f9;
+      }
+
+      .canceled {
+        background-color: grey
       }
 
       .panel {
@@ -33,14 +37,6 @@
         width: 100%;
       }
     </style>
-
-    <script>
-      setTimeout(
-        function() {
-          location.reload();
-        }, 10000
-      )
-    </script>
   </head>
 
   <body>
