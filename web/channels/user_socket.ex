@@ -2,7 +2,7 @@ defmodule GitlabDashboard.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", GitlabDashboard.RoomChannel
+  channel "gitlab:*", GitlabDashboard.GitlabChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
